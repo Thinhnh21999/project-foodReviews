@@ -1,13 +1,12 @@
-import BgHome from "../../Svg/bg-home.svg";
-import Logo from "../../Svg/logo.svg"
-import User from "../../Svg/user.svg"
-import PassWord from "../../Svg/pass.svg"
+import BgHome from "./Svg/bg-home.svg";
+import Logo from "./Svg/logo.svg"
+import User from "./Svg/user.svg"
+import PassWord from "./Svg/pass.svg"
 import Btn from "../../Component/Btn/index.jsx"
-import {handleClickLogin} from "../../Component/Btn/index.jsx"
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useState } from "react";
 
-export default function Login() {
+export default function Login(props) {
+	const { isAuth, setIsAuth } = props;
 	const [formValues, setFormValues] = useState({
 		useName: "",
 		password: "",
@@ -30,6 +29,9 @@ export default function Login() {
 		let errors = {
 			...formErrors
 		}
+		let values = {
+			...formValues
+		}
 		if (!formValues.useName) {
 			errors.useNameError = "Bạn chưa đăng nhập tài khoản";
 			isValid = false;
@@ -43,8 +45,18 @@ export default function Login() {
 			errors.passwordError = "";
 		}
 
+		if (isValid) {
+			alert("ban dang nhap thanh cong")
+			setIsAuth(true)
+			values.useName = "";
+			values.password = "";
+		}
+
+		setFormValues(values);
 		setFormErrors(errors);
 	}
+			console.log(isAuth)
+
 
 
 	return (

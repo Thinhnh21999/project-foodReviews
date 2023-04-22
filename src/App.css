@@ -12,8 +12,22 @@
   color: #19191C;
 }
 
+.flex-center {
+  @apply flex items-center justify-center ;
+}
 
+.text-title {
+  @apply text-lg font-semibold;
+}
 
 .input {
   @apply flex border-solid border px-3 py-3 rounded-[58px];
+}
+
+.navigation-item {
+  @apply flex flex-col items-center py-2 px-2 mb-3 rounded-lg;
+}
+
+.dashboard-menu {
+  @apply px-4 py-2 border border-solid border-grey rounded-[40px] text-[14px] flex items-center;
 }

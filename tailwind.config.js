@@ -5,12 +5,13 @@ module.exports = {
     extend: {
       textColor: {
         primary: "#FF5C00",
-      },
-      textColor: {
         p: "#828487",
       },
       colors: {
         primary: "#FF5C00",
+      },
+      borderColor: {
+        grey: "#E4E4E4",
       },
     },
   },

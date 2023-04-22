@@ -11,7 +11,7 @@ export default function Header() {
 	return (
 		<div className="bg-white py-4 px-6 flex items-center justify-between border-b solid border-[#E4E4E4]">
 			<div className="flex">
-				<button className="relative mr-7">
+				<button className="relative mr-6">
 					<img  src={ Arrow } alt="" />
 					<div className="absolute left-16 inset-0 border-r-2 solid border-[#E4E4E4]"></div>
 				</button>
@@ -22,7 +22,7 @@ export default function Header() {
 				</div>
 			</div>
 
-			<navbar className="flex items-center">
+			<div className="flex items-center">
 				<ul className="flex">
 					<li className="mr-8">
 						<NavLink className="flex text-p" to="/home">
@@ -51,15 +51,15 @@ export default function Header() {
 				</ul>
 
 				<div className="flex">
-					<div className="bg-primary/10 rounded-[58px] mr-4">
+					<div className="bg-primary/10 rounded-[58px] mr-4 flex-center">
 						<p className="text-primary py-2 px-5">Dinning option</p>
 					</div>
-					<div className="bg-[#F8F9FD] rounded-[58px] mr-4">
+					<div className="bg-[#F8F9FD] rounded-[58px] mr-4 flex-center">
 						<p className=" py-2 px-5">10:53:00  26/02/2023</p>
 					</div>
 					<img className="mr-4" src={User} alt=",,," />
 				</div>
-			</navbar>
+			</div>
 		</div>
 	)
 }

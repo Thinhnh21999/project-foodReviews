@@ -8,15 +8,16 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom/cjs/react-router-dom.min";
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 function App() {
-  const [isAuth, setIsAuth] = useState(false);
+  const isAuth = useSelector((state) => state.Auth.isAuth); // lấy state ở reducer Auth (Auth định nghĩa tại reducer)
+
   return (
     <div>
       <Switch>
         <Route exact path="/login">
-          <Login isAuth={isAuth} setIsAuth={setIsAuth} />
+          <Login />
         </Route>
         <Route exact path="/home" component={Home} />
       </Switch>

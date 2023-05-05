@@ -25,28 +25,28 @@ export default function Header() {
 			<div className="flex items-center">
 				<ul className="flex">
 					<li className="mr-8">
-						<NavLink className="flex text-p" to="/home">
+						<Link className="flex text-p" to="/home">
 							<img className="mr-3" src={HomeIcon} alt=",,,"></img>
 							Home
-						</NavLink>
+						</Link>
 					</li>
 					<li className="mr-8">
-						<NavLink className="flex text-p" to="/home">
+						<Link className="flex text-p" to="/home">
 							<img className="mr-3" src={Order} alt=",,,"></img>
 							Order
-						</NavLink>
+						</Link>
 					</li>
 					<li className="mr-8">
-						<NavLink className="flex text-p" to="/home">
+						<Link className="flex text-p" to="/home">
 							<img className="mr-3" src={History} alt=",,,"></img>
 							History
-						</NavLink>
+						</Link>
 					</li>
 					<li className="mr-8">
-						<NavLink className="flex text-p" to="/home">
+						<Link className="flex text-p" to="/home">
 							<img className="mr-3" src={Bills} alt=",,,"></img>
 							Bills
-						</NavLink>
+						</Link>
 					</li>
 				</ul>
 

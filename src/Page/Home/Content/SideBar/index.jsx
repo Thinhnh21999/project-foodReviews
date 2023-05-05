@@ -8,7 +8,7 @@ import Plus from "./Svg/plus.svg"
 
 export default function SideBar() {
 	return (
-		<div className="flex flex-col w-[360px] h-screen border-l solid border-grey">
+		<div className="flex flex-col relative w-[390px] h-screen border-l solid border-grey">
 			<div className="px-6">
 				<div className="p-1 mt-4 h-11 w-full flex  rounded-[58px] bg-[#F8F9FD] text-3.5">
 				<div className="bg-white w-1/2 flex-center cursor-pointer rounded-[58px]"><p className="py-2 px-4">Buy</p></div>
@@ -39,7 +39,7 @@ export default function SideBar() {
 								<p className="text-p">Price</p>
 								<span className="text-primary font-semibold text-base">$ 25.12</span>
 							</div>
-							<div className="flex items-center">
+							<div className="w-1/2 flex items-center">
 								<img src={Minus} alt="minus" />
 								<span className="font-semibold text-sm mx-3">1</span>
 								<img src={Plus} alt="plus" />
@@ -57,7 +57,7 @@ export default function SideBar() {
 								<p className="text-p">Price</p>
 								<span className="text-primary font-semibold text-base">$ 15.40</span>
 							</div>
-							<div className="flex items-center">
+							<div className="w-1/2 flex items-center">
 								<img src={Minus} alt="minus" />
 								<span className="font-semibold text-sm mx-3">1</span>
 								<img src={Plus} alt="plus" />
@@ -65,6 +65,7 @@ export default function SideBar() {
 						</div>
 					</div>
 				</div>
+
 				<div className="flex w-full py-4 border-b border-grey">
 					<img className="mr-3" src={Food3} alt="..." />
 					<div className="flex flex-col w-full">
@@ -74,7 +75,7 @@ export default function SideBar() {
 								<p className="text-p">Price</p>
 								<span className="text-primary font-semibold text-base">$ 11.21</span>
 							</div>
-							<div className="flex items-center">
+							<div className="w-1/2 flex items-center">
 								<img src={Minus} alt="minus" />
 								<span className="font-semibold text-sm mx-3">1</span>
 								<img src={Plus} alt="plus" />

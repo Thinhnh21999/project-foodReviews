@@ -1,38 +1,24 @@
 import Search from "./Svg/search.svg";
 import Card from "../../../../Component/Card/index.jsx";
 import { useEffect, useRef, useState } from "react";
-import "./index.js";
-import restClient from "./index.js";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { debounce } from "lodash";
 import { useDispatch, useSelector } from "react-redux";
-import { setCartsAction, setPramsAction } from "../../../../Redux/action";
+import {
+  getCartsAction,
+  setPramsAction,
+  setMetaAction,
+} from "../../../../Redux/action";
 
 export default function Dashboard(props) {
   const dispatch = useDispatch();
   const { carts, params } = useSelector((state) => state.Carts);
-  const [originalCarts, setOriginalCarts] = useState([]);
-  const [currentPage, setCurrentPage] = useState();
-  const inputRef = useRef();
+  const [search, setSearch] = useState("");
+  console.log(carts);
 
   useEffect(() => {
-    fetchCarts(params);
-  }, [params]);
-
-  console.log(params);
-
-  async function fetchCarts(params) {
-    try {
-      const response = await restClient("get", "carts", params);
-      dispatch(setCartsAction(response.data.data));
-      dispatch(setPramsAction(response.data.pagination));
-      console.log(response.data.pagination);
-      setOriginalCarts(response.data.data); // carts ban dau (nguyen ban)
-      setCurrentPage(params._page);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+    dispatch(getCartsAction(params));
+  }, []);
 
   const handleChangePage = (page) => {
     dispatch(
@@ -41,51 +27,53 @@ export default function Dashboard(props) {
         _page: page,
       })
     );
-    fetchCarts({
-      ...params,
-      _page: page,
-    });
+    dispatch(
+      getCartsAction({
+        ...params,
+        _page: page,
+      })
+    );
+    console.log(page);
   };
 
-  const handleSearch = debounce(async (e) => {
-    try {
-      const search = e.target.value;
-      const searchParams = {
+  const handleSearch = debounce((e) => {
+    setSearch(e.target.value);
+    dispatch(
+      getCartsAction({
         ...params,
-        search: search,
-      };
-
-      const response = await restClient(
-        "get",
-        `carts?title_like=${search}&_sort=price&_order=${params.sort}`,
-        searchParams
-      );
-      dispatch(setCartsAction(response.data.data));
-      dispatch(setPramsAction(response.data.pagination));
-    } catch (error) {
-      console.log(error);
-    }
+        title_like: e.target.value,
+        _page: 1,
+      })
+    );
+    dispatch(
+      setMetaAction({
+        ...params,
+        title_like: e.target.value,
+        _page: 1,
+      })
+    );
   }, 500);
 
   const handleSort = async (e) => {
-    // setValueSort(value)
-    try {
-      const sort = e.target.value;
-      const sortParams = {
+    const sort = e.target.value;
+    dispatch(
+      getCartsAction({
         ...params,
-        sort: sort,
-      };
-
-      const response = await restClient(
-        "get",
-        `carts?_sort=price&_order=${sort}`,
-        sortParams
-      );
-      dispatch(setCartsAction(response.data.data));
-      dispatch(setPramsAction(response.data.pagination));
-    } catch (error) {
-      console.log(error);
-    }
+        _sort: "price",
+        _order: sort,
+        title_like: search,
+        _page: 1,
+      })
+    );
+    dispatch(
+      setMetaAction({
+        ...params,
+        _sort: "price",
+        _order: sort,
+        title_like: search,
+        _page: 1,
+      })
+    );
   };
 
   const totalPages = Math.ceil(params._totalRows / params._limit);
@@ -101,7 +89,6 @@ export default function Dashboard(props) {
             <img className="mr-2.5 w-6 h-6" src={Search} alt="..." />
             <input
               className="w-full outline-none"
-              ref={inputRef}
               onChange={(e) => handleSearch(e)}
               type="text"
               placeholder="Search Menu..."
@@ -142,7 +129,7 @@ export default function Dashboard(props) {
             {[...Array(totalPages)].map((item, index) => (
               <NavLink
                 className="p-2 mr-1 bg-slate-200 rounded-[4px] hover:bg-primary/10"
-                to={`/Home/food/${index + 1}`}
+                to={`/Home/food?page${index + 1}`}
                 onClick={() => handleChangePage(index + 1)}
                 key={index}
               >

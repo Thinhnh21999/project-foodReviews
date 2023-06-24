@@ -19,7 +19,7 @@ export default function Dashboard(props) {
 
   useEffect(() => {
     fetchCarts(params);
-  }, [params]);
+  }, []);
 
   async function fetchCarts(meta) {
     try {

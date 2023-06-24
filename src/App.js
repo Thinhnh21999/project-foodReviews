@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Home from "./Page/Home/Home.jsx";
 import Login from "./Page/Login/index.jsx";

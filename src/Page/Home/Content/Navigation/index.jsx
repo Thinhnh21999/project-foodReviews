@@ -4,21 +4,13 @@ import breakfast from "./Svg/breakfast.svg";
 import lasagma from "./Svg/lasagma.svg";
 import misc from "./Svg/misc.svg";
 import pasta from "./Svg/pasta.svg";
-import { useEffect, useState } from "react";
 import {
   NavLink,
   useLocation,
 } from "react-router-dom/cjs/react-router-dom.min";
 
-export default function Navigation(props) {
-  const [isActive, setIsActive] = useState(false);
+export default function Navigation() {
   const location = useLocation();
-
-  useEffect(() => {
-    if (location.pathname === "/home") {
-      setIsActive(true);
-    }
-  });
 
   return (
     <div className="relative p-6 flex flex-col items-center border-r solid border-gray w-[125px]">
@@ -34,7 +26,6 @@ export default function Navigation(props) {
         </NavLink>
         <NavLink
           to="/home/beverages"
-          // onClick={(e) => handleClickActiveItem(e, "beverages")}
           className={`navigation-item text-p ${
             location.pathname === "/home/beverages" ? "active-navigation" : ""
           }`}
@@ -53,7 +44,6 @@ export default function Navigation(props) {
         </NavLink>
         <NavLink
           to="/home/appetizer"
-          // onClick={(e) => handleClickActiveItem(e, "appetizer")}
           className={`navigation-item text-p ${
             location.pathname === "/home/appetizer" ? "active-navigation" : ""
           }`}
@@ -63,7 +53,6 @@ export default function Navigation(props) {
         </NavLink>
         <NavLink
           to="/home/bread"
-          // onClick={(e) => handleClickActiveItem(e, "bread")}
           className={`navigation-item text-p ${
             location.pathname === "/home/bread" ? "active-navigation" : ""
           }`}
@@ -73,7 +62,6 @@ export default function Navigation(props) {
         </NavLink>
         <NavLink
           to="/home/snack"
-          // onClick={(e) => handleClickActiveItem(e, "snack")}
           className={`navigation-item text-p ${
             location.pathname === "/home/snack" ? "active-navigation" : ""
           }`}

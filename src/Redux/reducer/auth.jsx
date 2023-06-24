@@ -1,10 +1,12 @@
+import { actionType } from "../action";
+
 const initialAuthState = {
-  isAuth: true,
+  isAuth: false,
 };
 
 export default function authReducer(state = initialAuthState, action) {
   switch (action.type) {
-    case "LOGIN":
+    case actionType.SET_LOGIN:
       return {
         ...state,
         isAuth: true,

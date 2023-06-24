@@ -12,14 +12,12 @@ export default function Dashboard(props) {
   const dispatch = useDispatch();
   const { carts, params } = useSelector((state) => state.Carts);
   const [originalCarts, setOriginalCarts] = useState([]);
-  // const [searchText, setSearchText] = useState("")
-  // const [valueSort, setValueSort] = useState("")
   const [currentPage, setCurrentPage] = useState();
   const inputRef = useRef();
 
   useEffect(() => {
     fetchCarts(params);
-  }, [params]);
+  }, []);
 
   async function fetchCarts(meta) {
     try {
@@ -47,7 +45,6 @@ export default function Dashboard(props) {
   };
 
   const handleSearch = debounce(async (e) => {
-    // setSearchText(e.target.value)
     try {
       const search = e.target.value;
       const searchParams = {
@@ -68,7 +65,6 @@ export default function Dashboard(props) {
   }, 500);
 
   const handleSort = async (e) => {
-    // setValueSort(value)
     try {
       const sort = e.target.value;
       const sortParams = {
